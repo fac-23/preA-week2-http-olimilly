@@ -14,18 +14,30 @@ async function collectPrize(url) {
 }
 
 //extract pokemon PNG url from random pokemon object and update img src
-async function setPrizeUrl(collectPokemonArray) {
+async function setPrizeUrl(collectPokemonArray, difficulty) {
   collectPokemonArray()
     .then((response) => {
       response
         .json()
         .then((data) => data.results)
         .then((data) => {
-          let randIndex = Math.floor(Math.random() * 10);
+          let randIndex = Math.floor(Math.random() * 20);
           let pokemonURL = data[randIndex].url;
           collectPrize(pokemonURL).then((response) => {
             response.json().then((data) => {
-              prizeImage.src = data.sprites.front_default;
+              console.log(data);
+              switch (difficulty) {
+                case "easy":
+                  prizeImage.src = data.sprites.front_default;
+                  break;
+                case "medium":
+                  prizeImage.src =
+                    data.sprites.other[`official-artwork`].front_default;
+                  break;
+                case "hard":
+                  prizeImage.src = data.sprites.other.dream_world.front_default;
+                  break;
+              }
             });
           });
         });
@@ -38,5 +50,9 @@ async function setPrizeUrl(collectPokemonArray) {
 }
 
 prizeButton.addEventListener("click", (e) => {
-  setPrizeUrl(collectPokemonArray);
+  let difficulty = document.querySelector(
+    'input[name="difficulty"]:checked'
+  ).id;
+
+  setPrizeUrl(collectPokemonArray, difficulty);
 });
