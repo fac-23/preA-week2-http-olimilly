@@ -9,23 +9,25 @@
   </head>
   <body>
     <h1>API project</h1>
+
+    <form>
+      <fieldset>
+        <legend>Test your Trivia Knowledge for a Pokemon Prize</legend>
+
+        <input type="radio" id="easy" name="difficulty" />
+        <label for="easy">Easy</label><br />
+
+        <input type="radio" id="medium" name="difficulty" />
+        <label for="medium">Medium</label><br />
+
+        <input type="radio" id="hard" name="difficulty" />
+        <label for="hard">Hard</label>
+        <button class="level">Choose your level</button>
+      </fieldset>
+    </form>
+    <img id="prizeImg" />
+    <button id="prizeBtn">Reveal Prize</button>
     <script src="quiz.js"></script>
     <script src="pokemon.js"></script>
   </body>
-  <form>
-  <fieldset>
-    <legend>Test your Trivia Knowledge for a Pokemon Prize</legend>
-
-    <input type="radio" id="easy" name="difficulty">
-    <label for="easy">Easy</label><br/>
-
-    <input type="radio" id="medium" name="difficulty">
-    <label for="medium">Medium</label><br/>
-
-    <input type="radio" id="hard" name="difficulty">
-    <label for="hard">Hard</label>
-    <button class="level">Choose your level</button>
-</fieldset>
-</form>
-
 </html>
