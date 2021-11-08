@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
 }
 
 body {
@@ -10,17 +10,22 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background: rgb(120,230,126);
-  background: radial-gradient(circle, rgba(120,230,126,1) 0%, rgba(241,181,113,1) 100%);
+  background: rgb(120, 230, 126);
+  background: radial-gradient(
+    circle,
+    rgba(120, 230, 126, 1) 0%,
+    rgba(241, 181, 113, 1) 100%
+  );
 }
 
 .btn {
-padding: 1.5rem;
-text-align: center;
-font-size: 2rem;
-background-color: rgb(71, 230, 150);
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  background-color: rgb(71, 230, 150);
 }
 
 #prizeImg {
   width: 100px;
+  padding: 10px;
 }
