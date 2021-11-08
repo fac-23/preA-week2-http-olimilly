@@ -5,32 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8d302ae9fa.js" crossorigin="anonymous"></script>
     <title>API project</title>
   </head>
   <body>
-    <h1>API project</h1>
+    <h1>Quiz App</h1>
+      <!--QUIZ SECTION-->
+    <section class="quiz-section">
+      <h2>Question</h2>
+      <p id="category"></p>
+      <p id="difficulty"></p>
+      <p id="question"></p>
+      <button id="answer1" class="btn" type="button"></button>
+      <button id="answer2" class="btn" type="button"></button>
+      <button id="answer3" class="btn" type="button"></button>
+      <button id="answer4" class="btn" type="button"></button>
+    </section>
+      
 
-    <form>
-      <fieldset>
-        <legend>Test your Trivia Knowledge for a Pokemon Prize</legend>
-
-        <input type="radio" id="easy" name="difficulty" checked="true" />
-        <label for="easy">Easy</label><br />
-
-        <input type="radio" id="medium" name="difficulty" />
-        <label for="medium">Medium</label><br />
-
-        <input type="radio" id="hard" name="difficulty" />
-        <label for="hard">Hard</label>
-        <button class="level">Choose your level</button>
-      </fieldset>
-    </form>
+    <!--I left this input tag in because it's linked to the pokemon.js file-->
+    <input type="radio" id="easy" name="difficulty" checked="true" />
+    <!--POKEMON SECTION-->
+    <section class="pokemon-section">
     <button id="prizeBtn">Reveal Prize</button>
     <img
       id="prizeImg"
       src="https://tse2.mm.bing.net/th?id=OIP.F2perKTqATWmbWMIYvJS2AHaHH&pid=Api"
     />
+    </section>
     <script src="quiz.js"></script>
     <script src="pokemon.js"></script>
   </body>
 </html>
+
+
+
+
