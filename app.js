@@ -25,7 +25,7 @@ function useApiData(data) {
   document.querySelector(
     "#question"
   ).innerHTML = `Question: ${data.results[0].question}`;
-  document.querySelector("#answer1").innerHTML = data.results[0].correct_answer;
+  document.querySelector("#answer1").innerHTML = data.results[0].correct_answer
   document.querySelector("#answer2").innerHTML =
     data.results[0].incorrect_answers[0];
   document.querySelector("#answer3").innerHTML =
@@ -39,7 +39,7 @@ function useApiData(data) {
 let correctButton = document.querySelector("#answer1");
 
 correctButton.addEventListener("click", () => {
-  alert("You got it right!");
+  console.log("Correct!")
   sendApiRequest();
   //update score on correct answer
   score++;
@@ -49,14 +49,16 @@ correctButton.addEventListener("click", () => {
   }
 });
 
-//funcion for incorrect answer
+//function for random correct answer
 
-let incorrectButton = document.querySelector("#answer2");
+let randomChoice = document.querySelector(".correct");
 
-incorrectButton.addEventListener("click", () => {
-  alert("Wrong Answer!");
-  sendApiRequest();
+randomChoice.addEventListener("click", () => {
+let arr = Array.from(randomChoice)
+console.log("Wrong!")
+sendApiRequest()
 });
+
 
 // -----------------------------------POKEMON API-------------------------------------------- //
 
