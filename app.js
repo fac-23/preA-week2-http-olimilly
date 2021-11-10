@@ -1,10 +1,12 @@
 //set score to 0
 let score = 0;
+const loader = document.querySelector(".loader");
 
 window.onload = sendApiRequest;
 
 // An asynchronous function to fetch data from the API
 async function sendApiRequest() {
+  loader.style.display = "block";
   let response = await fetch(
     `https://opentdb.com/api.php?amount=1&type=multiple`
   );
@@ -14,6 +16,7 @@ async function sendApiRequest() {
 
 // function to process the data received from the API
 function useApiData(data) {
+  loader.style.display = "none";
   document.querySelector(
     "#category"
   ).innerHTML = `Category: ${data.results[0].category}`;

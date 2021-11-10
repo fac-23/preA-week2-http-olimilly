@@ -18,41 +18,41 @@ body {
   );
 }
 
-
-h1, h2, p{
+h1,
+h2,
+p {
   padding: 2rem;
   text-align: center;
   font-size: 2rem;
 }
 
 h1 {
-  color:rgb(211, 109, 25);
+  color: rgb(211, 109, 25);
 }
 
 h2 {
-    color:rgb(26, 184, 73);
-    
+  color: rgb(26, 184, 73);
 }
 
 p {
-  color:rgb(153, 33, 63);
+  color: rgb(153, 33, 63);
 }
 
 .quiz-section {
   width: 900px;
   max-width: 80%;
   margin: 0 auto;
-  background-color:rgb(135, 161, 238);
+  background-color: rgb(135, 161, 238);
   border-radius: 5px;
   padding: 2rem;
   box-shadow: 0 0 10px 2px;
 }
 
 .btn-grid {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 0;
 }
 
 .btn {
@@ -62,13 +62,11 @@ p {
   padding: 2rem;
   color: rgb(32, 104, 70);
   font-size: 2rem;
-  
 }
 
 .btn:hover {
   color: rgb(22, 109, 37);
 }
-
 
 .pokemon-section {
   margin-left: auto;
@@ -78,4 +76,24 @@ p {
 #prizeImg {
   width: 100px;
   padding: 10px;
+}
+
+.loader {
+  display: none;
+  border: 16px solid #e60909;
+  border-top: 16px solid #ffffff;
+  border-radius: 50%;
+  margin-left: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
