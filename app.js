@@ -1,21 +1,22 @@
 //set score to 0
 let score = 0;
+const loader = document.querySelector(".loader");
 
 window.onload = sendApiRequest;
 
 // An asynchronous function to fetch data from the API
 async function sendApiRequest() {
+  loader.style.display = "block";
   let response = await fetch(
     `https://opentdb.com/api.php?amount=1&type=multiple`
   );
-  console.log(response);
   let data = await response.json();
-  console.log(data);
   useApiData(data);
 }
 
 // function to process the data received from the API
 function useApiData(data) {
+  loader.style.display = "none";
   document.querySelector(
     "#category"
   ).innerHTML = `Category: ${data.results[0].category}`;
@@ -25,7 +26,7 @@ function useApiData(data) {
   document.querySelector(
     "#question"
   ).innerHTML = `Question: ${data.results[0].question}`;
-  document.querySelector("#answer1").innerHTML = data.results[0].correct_answer
+  document.querySelector("#answer1").innerHTML = data.results[0].correct_answer;
   document.querySelector("#answer2").innerHTML =
     data.results[0].incorrect_answers[0];
   document.querySelector("#answer3").innerHTML =
@@ -39,7 +40,7 @@ function useApiData(data) {
 let correctButton = document.querySelector("#answer1");
 
 correctButton.addEventListener("click", () => {
-  console.log("Correct!")
+  console.log("Correct!");
   sendApiRequest();
   //update score on correct answer
   score++;
@@ -54,11 +55,10 @@ correctButton.addEventListener("click", () => {
 let randomChoice = document.querySelector(".correct");
 
 randomChoice.addEventListener("click", () => {
-let arr = Array.from(randomChoice)
-console.log("Wrong!")
-sendApiRequest()
+  let arr = Array.from(randomChoice);
+  console.log("Wrong!");
+  sendApiRequest();
 });
-
 
 // -----------------------------------POKEMON API-------------------------------------------- //
 

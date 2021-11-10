@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
       rel="stylesheet"
@@ -16,34 +17,56 @@
     <title>API project</title>
   </head>
   <body>
-    <h1>Quiz App</h1>
+    <h1>Pokemon hunter Quiz</h1>
+
     <!--QUIZ SECTION-->
     <main>
-    <section class="quiz-section">
+      <section class="quiz-section">
         <p class="text" id="category"></p>
         <p class="text">Difficulty: <span id="difficulty"></span></p>
         <p id="question"></p>
         <div class="btn-grid">
-      <button id="answer1" class="btn correct" type="button" aria-label="answer1"></button>
-      <button id="answer2" class="btn correct" type="button" aria-label="answer2"></button>
-      <button id="answer3"class="btn correct" type="button" aria-label="answer3"></button>
-      <button id="answer4" class="btn correct" type="button" aria-label="answer4"></button>
-    </div>
-    </section>
+          <button
+            id="answer1"
+            class="btn correct"
+            type="button"
+            aria-label="answer1"
+          ></button>
+          <button
+            id="answer2"
+            class="btn correct"
+            type="button"
+            aria-label="answer2"
+          ></button>
+          <button
+            id="answer3"
+            class="btn correct"
+            type="button"
+            aria-label="answer3"
+          ></button>
+          <button
+            id="answer4"
+            class="btn correct"
+            type="button"
+            aria-label="answer4"
+          ></button>
+        </div>
+        <div class="loader"></div>
+      </section>
 
-    <!--POKEMON SECTION-->
-    <section class="pokemon-section">
-      <p class="text">Correct answers: <span id="score">0</span></p>
-      <h2>Prize pokemon:</h2>
-      <ul id="pokemonList"></ul>
-    </section>
+      <!--POKEMON SECTION-->
+      <section class="pokemon-section">
+        <p class="text">Correct answers: <span id="score">0</span></p>
+        <h2>Prize pokemon:</h2>
+        <ul id="pokemonList"></ul>
+      </section>
 
-    <!-- updated path to work with GH pages -->
-    <audio
-      id="prizeSound"
-      src="https://github.com/fac-23/preA-week2-http-olimilly/blob/main/pokemonWin.mp3?raw=true"
-    ></audio>
-  </main>
+      <!-- updated path to work with GH pages -->
+      <audio
+        id="prizeSound"
+        src="https://github.com/fac-23/preA-week2-http-olimilly/blob/main/pokemonWin.mp3?raw=true"
+      ></audio>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>
