@@ -66,47 +66,33 @@ const prizeImage = document.getElementById("prizeImg");
 const prizeButton = document.getElementById("prizeBtn");
 const prizeSound = document.getElementById("prizeSound");
 
-//fetch array of objects that contain URL links to detailed individual pokemon objects
-async function collectPokemonArray() {
-  const pokemonArr = await fetch("https://pokeapi.co/api/v2/pokemon/");
-  return pokemonArr;
-}
-
-//fetch individual pokemon object from the API link
-async function collectPrize(url) {
-  const prize = await fetch(url);
-  return prize;
-}
-
 //extract pokemon PNG url from random pokemon object and update img src
-async function setPrizeUrl(collectPokemonArray, difficulty) {
-  collectPokemonArray()
+async function setPrizeUrl(difficulty) {
+  fetch("https://pokeapi.co/api/v2/pokemon/")
+    .then((response) => response.json())
+    .then((data) => data.results)
+    .then((pokemon) => {
+      let randIndex = Math.floor(Math.random() * 20);
+      let pokemonURL = pokemon[randIndex].url;
+      return fetch(pokemonURL);
+    })
     .then((response) => {
-      response
-        .json()
-        .then((data) => data.results)
-        .then((data) => {
-          let randIndex = Math.floor(Math.random() * 20);
-          let pokemonURL = data[randIndex].url;
-          collectPrize(pokemonURL).then((response) => {
-            response.json().then((data) => {
-              switch (difficulty) {
-                case "easy":
-                  src = data.sprites.front_default;
-                  appendPrize(src);
-                  break;
-                case "medium":
-                  src = data.sprites.other[`official-artwork`].front_default;
-                  appendPrize(src);
-                  break;
-                case "hard":
-                  src = data.sprites.other.dream_world.front_default;
-                  appendPrize(src);
-                  break;
-              }
-            });
-          });
-        });
+      response.json().then((data) => {
+        switch (difficulty) {
+          case "easy":
+            src = data.sprites.front_default;
+            appendPrize(src);
+            break;
+          case "medium":
+            src = data.sprites.other[`official-artwork`].front_default;
+            appendPrize(src);
+            break;
+          case "hard":
+            src = data.sprites.other.dream_world.front_default;
+            appendPrize(src);
+            break;
+        }
+      });
     })
     .catch((e) => {
       console.log(
@@ -118,7 +104,7 @@ async function setPrizeUrl(collectPokemonArray, difficulty) {
 function setPrize() {
   prizeSound.play();
   let difficulty = document.querySelector("#difficulty").innerHTML;
-  setPrizeUrl(collectPokemonArray, difficulty);
+  setPrizeUrl(difficulty);
 }
 
 function appendPrize(src) {
