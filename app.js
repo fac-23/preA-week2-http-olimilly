@@ -1,6 +1,7 @@
 //set score to 0
 let score = 0;
 const loader = document.querySelector(".loader");
+const music = document.getElementById("battleSound");
 
 window.onload = sendApiRequest;
 
@@ -38,6 +39,7 @@ function useApiData(data) {
 //function for correct answer
 
 let correctButton = document.querySelector("#answer1");
+music.play();
 
 correctButton.addEventListener("click", () => {
   console.log("Correct!");
