@@ -14,14 +14,22 @@
       src="https://kit.fontawesome.com/8d302ae9fa.js"
       crossorigin="anonymous"
     ></script>
-    <title>API project</title>
+    <title>Pokemon Hunter</title>
   </head>
   <body>
     <h1>Pokemon hunter Quiz</h1>
 
     <!--QUIZ SECTION-->
     <main>
-      <section class="quiz-section">
+      <section class="instructions">
+        <p>
+          Welcome to Pokemon Hunter Quiz. For every three correct answers you
+          will be awarded a new pokemon!
+        </p>
+        <img class="landingImg" src="images/ash.png" alt="Ash Ketchum" />
+        <button class="startBtn">Start Quiz</button>
+      </section>
+      <section class="quiz-section hidden">
         <p class="text" id="category"></p>
         <p class="text">Difficulty: <span id="difficulty"></span></p>
         <p id="question"></p>
