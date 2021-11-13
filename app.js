@@ -1,6 +1,21 @@
 //set score to 0
 let score = 0;
 const loader = document.querySelector(".loader");
+const music = document.getElementById("battleSound");
+const start = document.querySelector(".startBtn");
+const instructions = document.querySelector(".instructions");
+const quizSection = document.querySelector(".quiz-section");
+const landingImg = document.querySelector(".landingImg");
+
+start.addEventListener("click", () => {
+  music.play();
+  landingImg.src = "/images/pokedex.png";
+
+  setTimeout(() => {
+    instructions.style.display = "none";
+    quizSection.classList.remove("hidden");
+  }, 2000);
+});
 
 window.onload = sendApiRequest;
 

@@ -21,9 +21,10 @@ body {
 h1,
 h2,
 p {
-  padding: 2rem;
+  margin: 0;
+  padding: 0.8rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 0.8rem;
 }
 
 h1 {
@@ -32,6 +33,7 @@ h1 {
 
 h2 {
   color: rgb(26, 184, 73);
+  margin: 0;
 }
 
 p {
@@ -44,28 +46,58 @@ p {
   margin: 0 auto;
   background-color: rgb(135, 161, 238);
   border-radius: 5px;
-  padding: 2rem;
+  padding: 0.5rem;
   box-shadow: 0 0 10px 2px;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.startBtn {
+  width: fit-content;
+  margin-top: 5rem;
+  padding: 1rem;
+  font-size: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  animation: pulse 3s infinite;
+}
+
+.startBtn:hover {
+  background-color: rgb(71, 230, 150);
+}
+
+.landingImg {
+  display: block;
+  max-width: 200px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
 }
 
 .btn-grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
-  margin: 20px 0;
+  margin: 5px 0;
 }
 
 .btn {
   border: 1px solid rgb(136, 164, 247);
   background-color: rgb(71, 230, 150);
   border-radius: 5px;
-  padding: 2rem;
+  padding: 0.5rem;
   color: rgb(32, 104, 70);
-  font-size: 2rem;
+  box-sizing: content-box;
+  border: rgba(0, 0, 0, 0) solid 1px;
 }
 
 .btn:hover {
-  color: rgb(22, 109, 37);
+  margin: -1px;
+  border: rgb(32, 104, 70) solid 2px;
 }
 
 .pokemon-section {
@@ -75,7 +107,12 @@ p {
 
 #prizeImg {
   width: 100px;
-  padding: 10px;
+  padding: 5px;
+  animation: pulse 1s infinite;
+}
+
+ul {
+  margin: 0;
 }
 
 .loader {
@@ -89,11 +126,61 @@ p {
   animation: spin 2s linear infinite;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (min-width: 400px) {
+  h1,
+  h2,
+  .btn,
+  p {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  h1,
+  h2,
+  .btn,
+  p {
+    font-size: 1.5rem;
+  }
+
+  .quiz-section {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  h1,
+  h2,
+  .btn,
+  p {
+    font-size: 1.8rem;
   }
 }
