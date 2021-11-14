@@ -10,6 +10,7 @@ const landingImg = document.querySelector(".landingImg");
 start.addEventListener("click", () => {
   music.play();
   landingImg.src = "/images/pokedex.png";
+  start.style.display = "none";
 
   setTimeout(() => {
     instructions.style.display = "none";
@@ -43,70 +44,63 @@ function useApiData(data) {
   ).innerHTML = `Question: ${data.results[0].question}`;
 
   //set random position of correct answer
-  let correctPosition = Math.floor(Math.random() * (4 -1) + 1);
+  let correctPosition = Math.floor(Math.random() * (4 - 1) + 1);
 
   //create array of all answers (answers 1-4)
-  let positions = [1,2,3,4];
+  let positions = [1, 2, 3, 4];
 
   //remove the correct answer from the available options
-  positions.splice(correctPosition -1, 1);
+  positions.splice(correctPosition - 1, 1);
 
-  //iterate through remaining positions and set 
+  //iterate through remaining positions and set
   //incorrect HTML text and false data attribute
 
   positions.forEach((position, index) => {
-    let incorrectBtn =
-    document.querySelector(`#answer${position}`);
-    incorrectBtn.innerHTML =
-    data.results[0].incorrect_answers[index];
+    let incorrectBtn = document.querySelector(`#answer${position}`);
+    incorrectBtn.innerHTML = data.results[0].incorrect_answers[index];
 
     incorrectBtn.setAttribute("data-correctness", "false");
     incorrectBtn.classList = "btn";
     //remove any correct/incorrect classes
   });
 
-    //set correct HTML text and true data attribute
-    let correctBtn =
-    document.querySelector(`#answer${correctPosition}`);
-    correctBtn.innerHTML = data.results[0].correct_answer;
+  //set correct HTML text and true data attribute
+  let correctBtn = document.querySelector(`#answer${correctPosition}`);
+  correctBtn.innerHTML = data.results[0].correct_answer;
 
-    correctBtn.setAttribute("data-correctness", "true");
-    correctBtn.classList = "btn";
-    //remove any correct/incorrect classes
-    }
+  correctBtn.setAttribute("data-correctness", "true");
+  correctBtn.classList = "btn";
+  //remove any correct/incorrect classes
+}
 
-    //get all buttons
-    let answerButton = 
-    document.querySelectorAll(".btn");
+//get all buttons
+let answerButton = document.querySelectorAll(".btn");
 
-    //add event listener to all buttons and 
-    //check if data attribute is true or false when clicked
-    answerButton.forEach((btn) => 
-    btn.addEventListener("click", (event) =>
-    {
-      let isCorrect =
-      event.target.getAttribute("data-correctness");
+//add event listener to all buttons and
+//check if data attribute is true or false when clicked
+answerButton.forEach((btn) =>
+  btn.addEventListener("click", (event) => {
+    let isCorrect = event.target.getAttribute("data-correctness");
 
-      if(isCorrect === "true") {
-        //if data attribute is true update score, 
-        //and correct class is added, button turns green
-        btn.classList.add("correct");
-        score++;
+    if (isCorrect === "true") {
+      //if data attribute is true update score,
+      //and correct class is added, button turns green
+      btn.classList.add("correct");
+      score++;
 
-        document.querySelector("#score").innerHTML = score;
-        if(score % 3 === 0) {
-          //if score is multiple of 3 call setPrize function
-          setPrize();
-        }
-      } else if (isCorrect === "false") {
-        //if data attribute is false, incorrect class added, button turns red
-        btn.classList.add("incorrect");
+      document.querySelector("#score").innerHTML = score;
+      if (score % 3 === 0) {
+        //if score is multiple of 3 call setPrize function
+        setPrize();
       }
-      //fetch next question
-      sendApiRequest();
-    })
-  );
-
+    } else if (isCorrect === "false") {
+      //if data attribute is false, incorrect class added, button turns red
+      btn.classList.add("incorrect");
+    }
+    //fetch next question
+    sendApiRequest();
+  })
+);
 
 // -----------------------------------POKEMON API-------------------------------------------- //
 
