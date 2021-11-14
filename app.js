@@ -41,39 +41,72 @@ function useApiData(data) {
   document.querySelector(
     "#question"
   ).innerHTML = `Question: ${data.results[0].question}`;
-  document.querySelector("#answer1").innerHTML = data.results[0].correct_answer;
-  document.querySelector("#answer2").innerHTML =
-    data.results[0].incorrect_answers[0];
-  document.querySelector("#answer3").innerHTML =
-    data.results[0].incorrect_answers[1];
-  document.querySelector("#answer4").innerHTML =
-    data.results[0].incorrect_answers[2];
-}
 
-//function for correct answer
+  //set random position of correct answer
+  let correctPosition = Math.floor(Math.random() * (4 -1) + 1);
 
-let correctButton = document.querySelector("#answer1");
+  //create array of all answers (answers 1-4)
+  let positions = [1,2,3,4];
 
-correctButton.addEventListener("click", () => {
-  console.log("Correct!");
-  sendApiRequest();
-  //update score on correct answer
-  score++;
-  document.querySelector("#score").innerHTML = score;
-  if (score % 3 === 0) {
-    setPrize();
-  }
-});
+  //remove the correct answer from the available options
+  positions.splice(correctPosition -1, 1);
 
-//function for random correct answer
+  //iterate through remaining positions and set 
+  //incorrect HTML text and false data attribute
 
-let randomChoice = document.querySelector(".correct");
+  positions.forEach((position, index) => {
+    let incorrectBtn =
+    document.querySelector(`#answer${position}`);
+    incorrectBtn.innerHTML =
+    data.results[0].incorrect_answers[index];
 
-randomChoice.addEventListener("click", () => {
-  let arr = Array.from(randomChoice);
-  console.log("Wrong!");
-  sendApiRequest();
-});
+    incorrectBtn.setAttribute("data-correctness", "false");
+    incorrectBtn.classList = "btn";
+    //remove any correct/incorrect classes
+  });
+
+    //set correct HTML text and true data attribute
+    let correctBtn =
+    document.querySelector(`#answer${correctPosition}`);
+    correctBtn.innerHTML = data.results[0].correct_answer;
+
+    correctBtn.setAttribute("data-correctness", "true");
+    correctBtn.classList = "btn";
+    //remove any correct/incorrect classes
+    }
+
+    //get all buttons
+    let answerButton = 
+    document.querySelectorAll(".btn");
+
+    //add event listener to all buttons and 
+    //check if data attribute is true or false when clicked
+    answerButton.forEach((btn) => 
+    btn.addEventListener("click", (event) =>
+    {
+      let isCorrect =
+      event.target.getAttribute("data-correctness");
+
+      if(isCorrect === "true") {
+        //if data attribute is true update score, 
+        //and correct class is added, button turns green
+        btn.classList.add("correct");
+        score++;
+
+        document.querySelector("#score").innerHTML = score;
+        if(score % 3 === 0) {
+          //if score is multiple of 3 call setPrize function
+          setPrize();
+        }
+      } else if (isCorrect === "false") {
+        //if data attribute is false, incorrect class added, button turns red
+        btn.classList.add("incorrect");
+      }
+      //fetch next question
+      sendApiRequest();
+    })
+  );
+
 
 // -----------------------------------POKEMON API-------------------------------------------- //
 
