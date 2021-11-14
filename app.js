@@ -1,5 +1,6 @@
 //set score to 0
 let score = 0;
+let remaining = 10;
 const loader = document.querySelector(".loader");
 const music = document.getElementById("battleSound");
 const start = document.querySelector(".startBtn");
@@ -81,6 +82,8 @@ let answerButton = document.querySelectorAll(".btn");
 answerButton.forEach((btn) =>
   btn.addEventListener("click", (event) => {
     let isCorrect = event.target.getAttribute("data-correctness");
+    remaining--;
+    document.querySelector("#remaining").innerHTML = remaining;
 
     if (isCorrect === "true") {
       //if data attribute is true update score,
@@ -89,13 +92,16 @@ answerButton.forEach((btn) =>
       score++;
 
       document.querySelector("#score").innerHTML = score;
-      if (score % 3 === 0) {
-        //if score is multiple of 3 call setPrize function
-        setPrize();
-      }
+
+      setPrize();
     } else if (isCorrect === "false") {
       //if data attribute is false, incorrect class added, button turns red
       btn.classList.add("incorrect");
+    }
+
+    if (remaining === 0) {
+      alert("Game Over");
+      quizSection.style.display = "none";
     }
     //fetch next question
     sendApiRequest();
