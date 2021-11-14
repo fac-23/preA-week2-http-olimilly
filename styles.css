@@ -3,7 +3,13 @@
   font-family: "Righteous", cursive;
 }
 
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
 body {
+  overflow: auto;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -87,18 +93,27 @@ p {
 
 .btn {
   border: 1px solid rgb(136, 164, 247);
-  background-color: rgb(71, 230, 150);
+  background-color: rgb(89, 125, 243);
   border-radius: 5px;
   padding: 0.5rem;
-  color: rgb(32, 104, 70);
+  color: rgb(188, 192, 243);
   box-sizing: content-box;
   border: rgba(0, 0, 0, 0) solid 1px;
 }
 
 .btn:hover {
   margin: -1px;
-  border: rgb(32, 104, 70) solid 2px;
+  border: rgb(223, 172, 4) solid 4px;
 }
+
+.correct {
+  background: linear-gradient(32deg, rgba(11, 223, 36) 0%, rgb(41, 232, 111) 100%);
+}
+
+.incorrect {
+  background: linear-gradient(32deg, rgba(230, 29, 29, 1) 0%, rgb(224, 11, 11, 1) 100%);
+}
+
 
 .pokemon-section {
   margin-left: auto;
@@ -114,6 +129,29 @@ p {
 ul {
   margin: 0;
 }
+
+
+
+.pokeball {
+  /* Adjust animation duration to change the element’s speed */
+  animation: fly 30s linear infinite;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  transform: translateX(-120%) translateY(-120%) rotateZ(0);
+  position: fixed;
+  animation-delay: 1s;
+  z-index: 999999;
+  max-width: 200px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+}
+
+
+    /* Keyframe values control where the element will begin
+    and end its trajectory across the screen. Each rule
+    represents a path the element follows across the screen. */
 
 .loader {
   display: none;
@@ -151,6 +189,42 @@ ul {
   100% {
     transform: scale(0.9);
   }
+}
+
+@keyframes fly {
+
+	98.001%, 0% {
+                display: block;
+		transform: translateX(-200%) translateY(100vh) rotateZ(0deg)
+	}
+
+	15% {
+		transform: translateX(100vw) translateY(-100%) rotateZ(180deg)
+	}
+
+	15.001%, 18% {
+		transform: translateX(100vw) translateY(-30%) rotateZ(0deg)
+	}
+
+	40% {
+		transform: translateX(-200%) translateY(3vh) rotateZ(-180deg)
+	}
+
+	40.001%, 43% {
+		transform: translateX(-200%) translateY(-100%) rotateZ(-180deg)
+	}
+
+	65% {
+		transform: translateX(100vw) translateY(50vh) rotateZ(0deg)
+	}
+
+	65.001%, 68% {
+		transform: translateX(20vw) translateY(-200%) rotateZ(180deg)
+	}
+
+	95% {
+		transform: translateX(10vw) translateY(100vh) rotateZ(0deg)
+	}
 }
 
 @media screen and (min-width: 400px) {

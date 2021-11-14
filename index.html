@@ -26,7 +26,7 @@
           Welcome to Pokemon Hunter Quiz. For every three correct answers you
           will be awarded a new pokemon!
         </p>
-        <img class="landingImg" src="images/ash.png" alt="Ash Ketchum" />
+        <img class="landingImg" src="/images/ash.png" alt="Ash Ketchum" />
         <button class="startBtn">Start Quiz</button>
       </section>
       <section class="quiz-section hidden">
@@ -36,25 +36,25 @@
         <div class="btn-grid">
           <button
             id="answer1"
-            class="btn correct"
+            class="btn correct incorrect"
             type="button"
             aria-label="answer1"
           ></button>
           <button
             id="answer2"
-            class="btn correct"
+            class="btn correct incorrect"
             type="button"
             aria-label="answer2"
           ></button>
           <button
             id="answer3"
-            class="btn correct"
+            class="btn correct incorrect"
             type="button"
             aria-label="answer3"
           ></button>
           <button
             id="answer4"
-            class="btn correct"
+            class="btn correct incorrect"
             type="button"
             aria-label="answer4"
           ></button>
@@ -67,6 +67,7 @@
         <p class="text">Correct answers: <span id="score">0</span></p>
         <h2>Prize pokemon:</h2>
         <ul id="pokemonList"></ul>
+        <img src="/images/pokeball-opening.png" alt="pokeball open" class="pokeball">
       </section>
 
       <!-- updated path to work with GH pages -->
