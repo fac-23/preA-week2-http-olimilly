@@ -129,15 +129,15 @@ async function setPrizeUrl(difficulty) {
         switch (difficulty) {
           case "easy":
             src = data.sprites.front_default;
-            appendPrize(src);
+            appendPrize(src, data.name);
             break;
           case "medium":
             src = data.sprites.other[`official-artwork`].front_default;
-            appendPrize(src);
+            appendPrize(src, data.name);
             break;
           case "hard":
             src = data.sprites.other.dream_world.front_default;
-            appendPrize(src);
+            appendPrize(src, data.name);
             break;
         }
       });
@@ -155,10 +155,11 @@ function setPrize() {
   setPrizeUrl(difficulty);
 }
 
-function appendPrize(src) {
+function appendPrize(src, name) {
   let list = document.querySelector("#pokemonList");
   var pokeImg = document.createElement("img");
   pokeImg.setAttribute("id", "prizeImg");
   pokeImg.setAttribute("src", src);
+  pokeImg.setAttribute("alt", `${name}`);
   list.appendChild(pokeImg);
 }
